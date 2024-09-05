@@ -18,5 +18,5 @@ func main() {
 	earning_before_tax := revenue - expenses
 	profit := earning_before_tax * (1 - tax_rate/100)
 	ratio := revenue / profit
-	fmt.Println("Earning before paying tax is:", earning_before_tax, ",the net profit is:", profit, "and the Ratio is:", ratio)
+	fmt.Printf("Earning before paying tax is: %v ,the net profit is: %v and the Ratio is: %v", earning_before_tax, profit, ratio)
 }

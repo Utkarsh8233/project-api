@@ -19,5 +19,5 @@ func main() {
 	fmt.Scan(&years)
 
 	future_value := investment_amount * math.Pow(1+expected_return_rate/100, years)
-	fmt.Println("Your current investment will turn to", future_value, "in", years, "years")
+	fmt.Printf("Your current investment will turn to %v in %v years", future_value, years)
 }
