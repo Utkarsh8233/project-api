@@ -64,8 +64,7 @@ func get_ebt_profit_ratio() (float64, float64, float64, error) {
 	if err != nil {
 		error_statement = errors.New("Unable to parse ebt value")
 	}
-	return profit_float64, ratio_float64, ebt_float64, error_statement
-
+	return profit_float64, ratio_float64, ebt_float64, nil
 }
 
 func main() {
