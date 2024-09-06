@@ -36,12 +36,14 @@ func main() {
 
 	fmt.Println("Welcome to Go Bank!")
 	for {
-		fmt.Println("What do you want to do?")
-		fmt.Println("1. Check Balance")
-		fmt.Println("2. Deposit Money")
-		fmt.Println("3. Withdraw Money")
-		fmt.Println("4. Exit")
-		fmt.Print("Your choice: ")
+		start_message := "What do you want to do?\n" +
+			"1.Check Balance\n" +
+			"2.Deposit Money\n" +
+			"3.Withdraw Money\n" +
+			"4.Exit\n" +
+			"Your choice: "
+
+		fmt.Print(start_message)
 		fmt.Scan(&choice)
 		switch choice {
 		case 1:
@@ -65,6 +67,7 @@ func main() {
 			if withdraw > 0 && withdraw <= accountBalance {
 				accountBalance -= withdraw
 				fmt.Println("Balance after withdrawal: ", accountBalance)
+				continue
 			} else {
 				fmt.Println("Invalid Amount")
 				continue
