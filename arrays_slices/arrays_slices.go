@@ -22,6 +22,12 @@ func main() {
 	goals = append(goals, "Home")
 	fmt.Println("Adding third goal (appending)", goals)
 
+	//append 2 arrays
+	array1 := []string{"lenovo", "apple", "hp"}
+	array2 := []string{"sony", "dell", "asus"}
+	newArray := append(array1, array2...)
+	fmt.Println("Printing array after appending two arrays: ", newArray)
+
 	//structs
 	type Product struct {
 		product string
