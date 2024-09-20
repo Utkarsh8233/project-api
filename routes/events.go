@@ -45,3 +45,26 @@ func getEvent(context *gin.Context) {
 	context.JSON(http.StatusOK, event)
 
 }
+
+func updateEvent(context *gin.Context) {
+	eventId, err := strconv.ParseInt(context.Param("id"), 10, 64)
+	if err != nil {
+		context.JSON(http.StatusBadRequest, gin.H{"message": fmt.Sprintf("could not parse event id, with err: %s", err)})
+	}
+	_, err = models.GetEventByID(eventId)
+	if err != nil {
+		context.JSON(http.StatusBadRequest, gin.H{"message": fmt.Sprintf("could not get event by Id, with err: %s", err)})
+	}
+	var updatedEvent models.Event
+	err = context.ShouldBindJSON(&updatedEvent)
+	if err != nil {
+		context.JSON(http.StatusBadRequest, gin.H{"message": fmt.Sprintf("could parse request data, with err: %s", err)})
+	}
+
+	updatedEvent.ID = eventId
+	err = updatedEvent.Update()
+	if err != nil {
+		context.JSON(http.StatusInternalServerError, gin.H{"message": fmt.Sprintf("could not update event, with err: %s", err)})
+	}
+	context.JSON(http.StatusOK, gin.H{"message": "event updated successfully!"})
+}
